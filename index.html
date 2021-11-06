@@ -1,32 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">.whole{background: rgb(32, 32, 32); align-items: center};
-    
-    .sojo{background:cadetblue}</style>
-    <title>Document</title>
-    <script src="script.js"></script>
+    <title>Text Editor</title>
+    <style type="text/css">
+        .whole {
+            background: rgb(32, 32, 32);
+            align-items: center;
+            flex-direction: column;
+            display: flex;
+        }
+
+        .sojo {
+            background: cadetblue
+        }
+    </style>
 </head>
+
 <body class="whole">
     <img src="LOGO.png" width="100" height="100" align="right">
-    <header  style="align-self:center ; font-family: cursive; color: coral; font-size: xx-large;">T-EDITOR</header>
-    
-    <textarea style="margin: 0px; width: 601px; height: 477px;color: rgb(83, 83, 85); fill: darkblue;resize: none;"> </textarea>
-    <button class="sojo" type="button" onclick="save">Save file</button>
-
-    <p style="color: cadetblue;">This text editor is made by some awesome peoples</p>
-    <p>if you want to contribute you can definetely contribute to this project</p>
-    <p>this app is in beta stage it is not preffered to use this text ecitor but you can use if you want to give use some feedback please give use some feedback</p>
-    <header style="color: blanchedalmond;font-family:'Times New Roman'">programmers working on t-editor</header>
-    <p style="font-family: Impact; color: brown; size: 2px;">(1) soumy johar(creator)</p>
-
-    <p>please contribute to source code :)</p>
+    <header style="align-self:center ; font-family: cursive; color: coral; font-size: xx-large;">T-EDITOR</header>
+    <hr width="100%"></hr>
+    <textarea style="margin: 0px; width: 601px; height: 477px;color: rgb(83, 83, 85); fill: darkblue;resize: none;" id='textarea'></textarea>
+    <button class="sojo" id="btnSave">Save file</button>
+    <hr width="100%"></hr>
+    <h3 style="color: cadetblue;">Made by:</h3>
+    <p style="font-family: Impact; color: brown; size: 2px;">(1) soumy johar (creator)</p>
     <section>
-        <p>things i am working on: aligning all the objects in center, saving files, syntax highlighting, python code runner
+    <p>Feel free to contribute to this project on github</p>
+    <p>this app is in beta stage, please give us feedback after trying it out</p>
+        <p>things i am working on: aligning all the objects in center (done cuz ice master best), saving files (done cuz ice master best again), syntax highlighting, python
+            code
+            runner
         </p>
     </section>
+    <script>
+        const downloadToFile = (content, filename, contentType) => {
+            const a = document.createElement('a');
+            const file = new Blob([content], { type: contentType });
+
+            a.href = URL.createObjectURL(file);
+            a.download = filename;
+            a.click();
+
+            URL.revokeObjectURL(a.href);
+        };
+
+        document.getElementById('btnSave').addEventListener('click', () => {
+            const textArea = document.querySelector('#textarea');
+
+            downloadToFile(textArea.value, 'text.txt', 'text/plain');
+        });
+    </script>
 </body>
 </html>
