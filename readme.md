@@ -2,5 +2,7 @@ T-editor is an open source text editor developed by soumy johar currently it is 
 
 special thanks to:-
 ice master 
+
+
 can any one can make a better readme? plzz
 
